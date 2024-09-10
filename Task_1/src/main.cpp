@@ -35,6 +35,14 @@ int main()
         cout << "Invalid departure time. Please enter a valid time in 24-hour format (HH:MM)." << endl;
         continue;
     }
+    
+    if(iarrHrs - idepHrs < 0){
+        iarrHrs += 24;
+    }
+    if(iarrMin - idepMin < 0){
+        iarrMin += 60;
+        iarrHrs -= 1;
+    }
 
     cout << "The train ride was during: " << abs(iarrHrs - idepHrs) << " hrs. " << abs(iarrMin - idepMin) << " min." << endl;
 }

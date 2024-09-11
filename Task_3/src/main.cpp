@@ -1,21 +1,25 @@
 #include <iostream>
+#include <sstream>
+#include <string>
+
 using namespace std;
 
 int main() {
-  cout << "Type a sentence" << endl;
-  string sentence;
-  getline(cin, sentence);
+    setlocale(LC_ALL, "Russian");
 
-  int words = 0;
+    string text;
+    wcout << L"Введите текст: ";
+    getline(std::cin, text);
 
-  for(int i = 0; i < sentence.size(); i++)
-  {
-    if(sentence[i] == ' ')
-    {
-      words++;
+    istringstream iss(text);
+    string word;
+    int word_count = 0;
+
+    while (iss >> word) {
+        word_count++;
     }
 
-  }
-  words = words + 1;
-  cout << "Quantity of words = " << words << endl;
+    wcout << L"Количество слов: " << word_count << endl;
+
+    return 0;
 }
